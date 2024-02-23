@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Metadata Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Makes sure padding doesn't affect overall width */
+        }
+        textarea {
+            resize: vertical; /* Allows vertical resizing, good for longer text */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .json-output {
+        background-color: #f0f0f0; /* Light gray background */
+        border: 1px solid #000; /* Black border */
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 4px;
+        text-align: left; /* Ensures the text inside is aligned to the left */
+        width: 80%; /* Adjust the width as needed */
+        margin-left: auto; /* Centers the div */
+        margin-right: auto; /* Centers the div */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+        overflow-x: auto; /* Adds a horizontal scrollbar if the content is too wide */
+    }
+    pre {
+        margin: 0; /* Removes default margin from <pre> */
+        white-space: pre-wrap; /* Allows text to wrap inside the container */
+        word-wrap: break-word; /* Ensures long words do not stretch the container */
+    }
+
+    .form-and-json-container {
+        display: flex;
+        justify-content: space-between; /* This separates the form and JSON output */
+        align-items: flex-start; /* Aligns items at the top */
+        gap: 20px; /* Adds some space between the form and the JSON output */
+    }
+
+    .form-container, .json-output {
+        flex: 1; /* Allows both children to grow and take up equal space */
+        padding: 20px;
+        background-color: #f0f0f0; /* Light gray background for visibility */
+        border: 1px solid #000; /* Black border */
+        border-radius: 4px;
+    }
+
+    .json-output {
+        max-width: 50%; /* Adjusts the width of the JSON output area */
+        overflow-x: auto; /* Adds a horizontal scrollbar if content is too wide */
+    }
+    </style>
+</head>
+<body>
+<div class="form-and-json-container">
+        <div class="form-container">
+        <h2>Register your field collection metadata</h2>
+        <form id="dataForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title">
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+
+            <label for="orcid">ORCID:</label>
+            <input type="text" id="orcid" name="orcid">
+            <span id="orcidError" style="color: red;"></span>
+
+            <label for="ror">ROR:</label>
+            <input type="text" id="ror" name="ror">
+
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude">
+
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude">
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+    <div class="json-output">
+        <h3>What the JSON file will contain:</h3>
+        <pre id="jsonDataDisplay"></pre>
+    </div>
+</div>
+
+
+
+
+    <script src="formToJson.js"></script>
+    <script> document.addEventListener('DOMContentLoaded', (event) => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').value = today;
+});</script>
+</body>
+</html>
