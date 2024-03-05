@@ -1,9 +1,30 @@
 direction: right
 
+classes: {
+  base: {
+    style: {
+    stroke-width: 0
+       fill: pink
+       shadow: true
+       border-radius: 10
+       }
+  }
+  node: {
+     style: {
+        stroke-width: 0
+       fill: honeydew
+       shadow: true
+       border-radius: 10
+  }
+}
+}
+
+
 pa: Project Application
 po: Project Organization
 lc: Local Context
 lcsp: Local Context \n for specific work
+
 ex1: Expedition
 crp: Current Reserch \n Permit
 bio: Biodiversity
@@ -11,6 +32,14 @@ bio: Biodiversity
 ex2: Expedition
 crp2: Current Reserch \n Permit
 bio2: Biodiversity
+
+*.class: base
+po.class: node
+pa.class: node
+crp.class: node
+bio.class: node
+crp2.class: node
+bio2.class: node
 
 po -> pa: has certification
 po -> lc: has certification
@@ -22,5 +51,6 @@ ex1 -> bio: has certification
 ex1 -> crp: has certification
 
 ex2 -> bio2: has certification
-ex2 -> crp2: crphas certification
+ex2 -> crp2: has certification
 ex2 -> lcsp: has certification
+
