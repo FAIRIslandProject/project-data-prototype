@@ -1,0 +1,26 @@
+direction: right
+
+pa: Project Application
+po: Project Organization
+lc: Local Context
+lcsp: Local Context \n for specific work
+ex1: Expedition
+crp: Current Reserch \n Permit
+bio: Biodiversity
+
+ex2: Expedition
+crp2: Current Reserch \n Permit
+bio2: Biodiversity
+
+po -> pa: has certification
+po -> lc: has certification
+
+po -> ex1: has event
+po -> ex2: has event
+
+ex1 -> bio: has certification
+ex1 -> crp: has certification
+
+ex2 -> bio2: has certification
+ex2 -> crp2: crphas certification
+ex2 -> lcsp: has certification
